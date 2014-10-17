@@ -1,0 +1,8 @@
+﻿This is a test quote|test author.
+You can display a piece of information without an author
+You can choose any style options.
+You can choose to rotate a number of ways.
+you can include any number of quotes.
+If you include the seperator the quote will display here| The author here
+Hope you like this module|Kevin
+Make sure your file contains no blank lines| Kevin

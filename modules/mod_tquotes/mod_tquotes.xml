@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension 
+type="module"
+version="2.5"
+	client="site"
+	method="upgrade">
+	<name>MOD_TQUOTES</name>
+	<author>Kevin Burke</author>
+	<creationDate>Jan 2013</creationDate>
+	<copyright>(C) 2012-2013 Kevin Burke</copyright>
+	<license>GPL2</license>
+	<authorEmail>kevin@mytidbits.us</authorEmail>
+	<authorUrl>www.mytidbits.us</authorUrl>
+	<version>1.1.1</version>
+	<description>MOD_TQUOTES_XML_DESCRIPTION</description>
+	
+	
+	<files>
+		<filename module="mod_tquotes">mod_tquotes.php</filename>
+		<filename>index.html</filename>
+		<filename>helper.php</filename>
+		<folder>assets</folder>
+		<folder>help</folder>
+		<folder>mod_tquotes</folder>
+		<folder>language</folder>
+		<folder>tmpl</folder>
+		
+	</files>
+	<help url="TQUOTES_MODULE_HELP"/>
+	
+
+<!-- The updateservers element is required to enable the automatic update. -->
+<!-- It is used to add the rows to #__update_sites and #__update_sites_extensions tables -->
+<updateservers>
+   <server type="extension" priority="1" name="Tquotes"
+   >http://mytidbits.us/joomla173/updateserver/tquotes-update.xml</server>
+</updateservers>
+
+
+	<config>
+
+	<fields name="params" >	
+	  
+	<fieldset name="basic">
+
+</fieldset>
+<fieldset name="basic">
+<field 
+	type="spacer" 
+	default=""
+	label="TQUOTE_OPTIONS" 
+	/>
+	
+<field 
+	name="filename"
+	 type="filelist"
+	 default="tquotes.txt"
+	 label="TQUOTES_SELECT_FILE" 
+	 description="TQUOTES_SELECT_FILE_DESC" 
+	 directory="modules/mod_tquotes/mod_tquotes" 
+	 filter=".txt" 
+	 exclude="" 
+	 stripext="" 
+	 hide_default='true' 
+	 hide_none='true'
+	 />
+	 
+	  <field 
+	name="interval"
+	 type="list"
+	 default="random"
+	 label="TQUOTES_ROTATE_QUOTE" 
+	 description="TQUOTES_ROTATE_INTERVAL">
+	 <option value ="random">TQUOTES_RANDOM</option>
+	 <option value ="z">TQUOTES_DAILY</option>
+	 <option value ="W">TQUOTES_WEEKLY</option>
+		<option value ="m">TQUOTES_MONTHLY</option>
+		<option value ="i">TQUOTES_MINUTE</option>
+		<option value ="h">TQUOTES_HOUR</option>
+	</field>	
+	 
+		<field 
+	name="quotemarks"
+	 type="list"
+	 default="0"
+	 label="TQUOTES_QUOTATION_MARKS" 
+	 description="TQUOTES_QUOTATION_MARKS_DESC">
+	 <option value ="0">JNO</option>
+	 <option value ="1">JYES</option>
+			 
+	</field>
+	 <field 
+	name="sep"
+	 type="text"
+	 default="|"
+	 label="TQUOTES_SEPERATOR" 
+	 description="TQUOTES_SEPERATOR_DESC" 
+	 />
+	 
+ <field 
+		name="style_method"
+		type="list"
+		default="0" 
+		label="TQUOTES_DISPLAY_OPTIONS"
+		description="TQUOTES_DISPLAY_OPTIONS_DESC">
+			<option value="0">TQUOTES_INHERIT</option>
+			<option value="1">TQUOTES_BELOW</option>
+			<option value="2">TQUOTES_CSS</option>
+	</field>
+	
+	<field 
+	name="text_color"
+	 type="color"
+	 default="black"
+	 label="TQUOTES_QUOTE_COLOR" 
+	 description="TQUOTES_QUOTE_COLOR_DESC" 
+	 />
+	 
+	<field 
+	name="background"
+	 type="color"
+	 default="white"
+	 label="TQUOTES_BACKGROUND_COLOR" 
+	 description="TQUOTES_BACKGROUND_COLOR_DESC" 
+	 />
+	 
+	 <field 
+	name="font-weight"
+	 type="list"
+	 default="400"
+	 label="TQUOTES_FONT_WEIGHT" 
+	 description="TQUOTES_FONT_WEIGHT_DESC" >
+	 <option value ="inherit">TQUOTES_100</option>
+	 <option value ="200">TQUOTES_200</option>
+	 <option value ="300">TQUOTES_300</option>
+	 <option value ="400">TQUOTES_400</option>
+	 <option value ="500">TQUOTES_500</option>
+	 <option value ="600">TQUOTES_600</option>
+	 <option value ="700">TQUOTES_700</option>
+	 <option value ="800">TQUOTES_800</option>
+	 <option value ="800">TQUOTES_900</option>
+	</field>	
+	  
+	 
+	 <field 
+	name="font-style"
+	 type="list"
+	 default="normal"
+	 label="TQUOTES_FONT_STYLE" 
+	 description="TQUOTES_FONT_STYLE_DESC" >
+	 <option value ="italic">TQUOTES_ITALIC</option>
+	 <option value ="oblique">TQUOTES_OBLIQUE</option>
+	 <option value ="normal">TQUOTES_NORMAL</option>
+	 </field>
+
+ <field 
+	name="font-size"
+	 type="list"
+	 default="medium"
+	 label="TQUOTES_FONT_SIZE" 
+	 description="TQUOTES_FONT_SIZE_DESC" >
+	 <option value ="inherit">TQUOTES_XX-none</option>
+	 <option value ="xx-small">TQUOTES_XX-SMALL</option>
+	 <option value ="x-small">TQUOTES_X-SMALL</option>
+	 <option value ="small">TQUOTES_SMALL</option>
+	 <option value ="medium">TQUOTES_MEDIUM</option>
+	 <option value ="large">TQUOTES_LARGE</option>
+	 <option value ="x-large">TQUOTES_X-LARGE</option>
+	 <option value ="xx-large">TQUOTES_XX-LARGE</option>
+	 
+	 </field>
+	 
+</fieldset>
+
+<fieldset
+
+name="advanced">
+<field
+name="layout"
+type="modulelayout"
+label="JFIELD_ALT_LAYOUT_LABEL"
+description="JFIELD_ALT_MODULE_LAYOUT_DESC" />
+
+<field
+name="moduleclass_sfx"
+type="text"
+label="COM_MODULES_FIELD_MODULECLASS_SFX_LABEL"
+description="COM_MODULES_FIELD_MODULECLASS_SFX_DESC" />
+
+<field
+name="cache"
+type="list"
+default="1"
+label="COM_MODULES_FIELD_CACHING_LABEL"
+description="COM_MODULES_FIELD_CACHING_DESC">
+<option value="1">JGLOBAL_USE_GLOBAL</option>
+<option value="0">COM_MODULES_FIELD_VALUE_NOCACHING</option>
+</field>
+
+<field
+name="cache_time"
+type="text"
+default="900"
+label="COM_MODULES_FIELD_CACHE_TIME_LABEL"
+description="COM_MODULES_FIELD_CACHE_TIME_DESC" />
+
+<field
+name="cachemode"
+type="hidden"
+default="itemid">
+<option value="itemid"></option>
+</field>
+
+</fieldset>
+
+</fields>
+</config>
+</extension>

@@ -1,0 +1,58 @@
+.validation-advice,
+.validation-failed {
+	color: #B94A48 !important;
+	border-color: #B94A48 !important;
+	box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset;
+}
+
+.cmc-loading {
+	opacity: 0.5;
+	pointer-events: none;
+	transition-duration: 0.16s;
+	transition-property: opacity;
+	transition-timing-function: ease-out;
+}
+
+.cmc-signup ul {
+	margin: 0;
+	list-style: none;
+}
+
+.cmc-signup ul li label {
+	display: inline-block;
+	margin-left: 5px;
+}
+
+.cmc-signup .form-validate .btn {
+	background: none;
+	border-radius: 5px;
+	border: 2px solid #D7D7D7;
+	color: #eaeaea;
+	line-height: 100%;
+	font-size: 11px;
+	font-family: 'Open Sans',sans-serif;
+	font-weight: 700;
+	text-transform: uppercase;
+	text-decoration: none;
+	padding: 10px 12px;
+	float: left;
+	-webkit-transition: all 0.4s ease;
+	-moz-transition: all 0.4s ease;
+	-o-transition: all 0.4s ease;
+	-ms-transition: all 0.4s ease;
+	transition: all 0.4s ease;
+}
+
+.cmc-signup .form-validate .btn:hover {
+	border: 2px solid #71c2ff;
+	text-decoration: none;
+	color: #71c2ff;
+}
+
+.cmc-signup .control-label {
+	width: 180px;
+}
+
+.cmc-signup .inputbox {
+	width: 200px;
+}

@@ -1,0 +1,60 @@
+
+.mod_tquote_css {
+    z-index:1;
+    /*background:yellow;*/
+    padding:0px;
+}
+
+.mod_tquote_css p {
+    font-size:15px;
+    padding:10px;
+    position:relative;
+    color:green
+}
+
+.mod_tquote_css  p span{
+    margin: 2em 0px;
+    padding-left: 40px;
+    quotes: &#8220 &#8220;
+}
+
+.mod_tquote_css p :before {
+    /*color: green;*/
+    content: open-quote;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size: 12px;                                /* size of closing quote */
+    font-weight: bold;
+    line-height: 0px;
+    /*margin: 0px 5px 0px -40px;*/
+    vertical-align: bottom;
+}
+.mod_tquote_css p:after{
+    /*color: green;*/
+    content: close-quote;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size: 12px;                                /* size of closing quote */
+    font-weight: bold;
+    line-height: 0px;
+    /*margin: 0px 5px 0px -40px;*/
+    vertical-align: bottom;
+}
+.mod_tquote_author_text_file{           /* author styles   */
+/*  display:block;*/
+    color: #45B2D6;
+    /*background:yellow;*/
+    font-weight: bold;
+    text-align: right;
+    font-size: 13.5px;
+    /*font-style: italic;*/
+    background: ;
+    margin-top: 8px;
+}
+.mod_tquote_quote_text_file{            /* quote styles if not auto quotemarks  */
+    display:block;
+    /*color:blue ;*/
+    /*font-weight:bold ;*/
+    font-style: italic;
+    font-size: 13.5px;
+    text-align: justify;
+    /*background:   yellow;*/
+}
