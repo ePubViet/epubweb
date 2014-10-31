@@ -1,0 +1,201 @@
+html,
+body {
+  height: 100%;
+}
+html {
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+body {
+  background-color: rgba(44, 62, 80, 0.6);
+  background-image: url('../images/pattern.png');
+  background-position: center;
+  background-repeat: repeat;
+  font-family: 'Raleway', 'Arial', sans-serif;
+}
+.vcb_countdown {
+  margin-bottom: 4%;
+}
+.countdown-container {
+  position: relative;
+  top: 50%;
+  /*	-webkit-transform: translateY(-50%);
+	-moz-transform: translateY(-50%);
+	transform: translateY(-50%);*/
+}
+.countdown-container .clock .clock-days {
+  width: 15% !important;
+  margin-left: 20%;
+}
+@media screen and (max-width: 991px) {
+  .countdown-container .clock .clock-days {
+    width: 22% !important;
+    margin-left: 6%;
+  }
+}
+@media screen and (max-width: 767px) {
+  .countdown-container .clock .clock-days {
+    display: inline-block;
+    margin-left: 4%;
+  }
+}
+@media screen and (max-width: 479px) {
+  .countdown-container .clock .clock-days {
+    width: 34% !important;
+  }
+  .countdown-container {
+    padding-left: 25px !important;
+  }
+}
+.countdown-container .clock .clock-hours {
+  width: 15% !important;
+}
+@media screen and (max-width: 991px) {
+  .countdown-container .clock .clock-hours {
+    width: 22% !important;
+  }
+}
+@media screen and (max-width: 767px) {
+  .countdown-container .clock .clock-hours {
+    display: inline-block;
+    margin-left: -8%;
+  }
+}
+@media screen and (max-width: 479px) {
+  .countdown-container .clock .clock-hours {
+    width: 34% !important;
+  }
+}
+.countdown-container .clock .clock-minutes {
+  width: 15% !important;
+}
+@media screen and (max-width: 991px) {
+  .countdown-container .clock .clock-minutes {
+    width: 22% !important;
+  }
+}
+@media screen and (max-width: 767px) {
+  .countdown-container .clock .clock-minutes {
+    display: inline-block;
+    margin-left: -8%;
+  }
+}
+@media screen and (max-width: 479px) {
+  .countdown-container .clock .clock-minutes {
+    width: 34% !important;
+    margin-left: 4%;
+  }
+}
+.countdown-container .clock .clock-seconds {
+  width: 15% !important;
+}
+@media screen and (max-width: 991px) {
+  .countdown-container .clock .clock-seconds {
+    width: 22% !important;
+  }
+}
+@media screen and (max-width: 767px) {
+  .countdown-container .clock .clock-seconds {
+    display: inline-block;
+    margin-left: -8%;
+  }
+}
+@media screen and (max-width: 479px) {
+  .countdown-container .clock .clock-seconds {
+    width: 34% !important;
+  }
+}
+.clock-item .inner {
+  height: 0px;
+  padding-bottom: 100%;
+  position: relative;
+  width: 100%;
+}
+.clock-canvas {
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  height: 0px;
+  padding-bottom: 100%;
+}
+.text {
+  color: #fff;
+  font-size: 30px;
+  font-weight: bold;
+  margin-top: -50px;
+  position: absolute;
+  top: 50%;
+  text-align: center;
+  text-shadow: 1px 1px 1px #000000;
+  width: 100%;
+}
+.text .val {
+  font-size: 39px;
+}
+@media screen and (max-width: 991px) {
+  .text .val {
+    font-size: 32px;
+  }
+}
+@media screen and (max-width: 767px) {
+  .text .val {
+    font-size: 27px;
+    margin-top: 11px;
+  }
+}
+.text .type-time {
+  font-size: 14px;
+}
+@media screen and (max-width: 767px) {
+  .text .type-time {
+    font-size: 10px;
+    margin-top: -10px;
+  }
+}
+@media (max-width: 767px) {
+  .clock-item {
+    margin: 0px 30px 30px 30px;
+  }
+}
+@media screen and (max-width: 991px) {
+  .block-email {
+    width: 60%;
+  }
+}
+@media screen and (max-width: 479px) {
+  .block-email {
+    width: 90%;
+  }
+}
+@media screen and (max-width: 767px) {
+  .block-email .fa-envelope-o {
+    /*                left:2% !important;*/
+    font-size: 22px;
+  }
+}
+@media screen and (max-width: 991px) {
+  .about-us {
+    z-index: 10;
+  }
+}
+@media screen and (max-width: 767px) {
+  .about-us .fa-user {
+    font-size: 23px;
+  }
+}
+@media screen and (max-width: 991px) {
+  .contact-us {
+    z-index: 10;
+  }
+}
+@media screen and (max-width: 767px) {
+  .contact-us .fa-envelope-o {
+    font-size: 23px;
+  }
+}
+@media screen and (max-width: 767px) {
+  .social .fa {
+    font-size: 20px;
+  }
+}
+/*# sourceMappingURL=kinetic.css.map */

@@ -1,0 +1,82 @@
+/**
+ * @version   $id: $
+ * @author    JoomlaUX!
+ * @package   Joomla!
+ * @subpackage  plg_system_juxcomingsoon
+ * @copyright Copyright (C) 2012 - 2014 by Joomlaux. All rights reserved.
+ * @license   http://www.gnu.org/licenses/gpl-3.0.html GNU/GPL version 3, See LICENSE.txt
+ */
+
+ .sub_menu_title {
+	margin-left: 100px; 
+ }
+ 
+.jux_option_toggler  {
+	cursor:pointer;
+	font-weight:bold;
+	padding:5px;
+	margin:0px;
+	
+	font-family:Arial, sans-serif;
+	color:#fff;
+	background: url(../images/body.jpg) repeat;
+}
+
+.jux_option_toggler-close  {
+	cursor:pointer;
+	font-weight:bold;
+	padding:5px;
+	margin:0px;
+	
+	font-family:Arial, sans-serif;
+	color:#fff;
+	background: url(../images/body_close.jpg) repeat;
+}
+
+.jux_option_toggler .block-setting {
+	background: url(../images/dot.png) no-repeat center left;
+	padding-left: 15px;
+}
+
+.jux_option_toggler-close .block-setting {
+	background: url(../images/dot.png) no-repeat center left;
+	padding-left: 15px;
+}
+
+.jux_option_toggler .control-icon {
+	background: url(../images/arrow_up.png) no-repeat;
+	width: 20px;
+	height: 20px;
+	float: right;
+	margin-top: -2px;
+	margin-right: 10px;
+}
+
+.jux_option_toggler-close .control-icon {
+	background: url(../images/arrow_down.png) no-repeat;
+	width: 20px;
+	height: 20px;
+	float: right;
+	margin-top: -2px;
+	margin-right: 10px;
+}
+
+.jux_option_element {
+	padding-top:10px !important;
+	padding-left:10px !important;
+/*	border:1px solid #a2a2a2 !important;*/
+}
+
+.jux_toggler-bound {
+	max-width: 480px;
+}
+
+.jux_option_element {
+/*	padding-top:10px !important;
+	padding-left:10px !important;*/
+	/*border:1px solid #a2a2a2 !important;*/
+}
+
+.jux_option_element-active {
+	overflow: visible !important;
+}

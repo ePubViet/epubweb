@@ -64,7 +64,7 @@ Pink forum dark:			#ffd0ff 		RGB: 255/208/255
 #Kunena a:active,
 #Kunena a:focus { color: #5388B4 !important; background-color:transparent !important;}
 
-#Kunena a:hover { color: #FF0000 !important; background-color:transparent !important; }
+#Kunena a:hover { text-decoration: underline!important; background-color:transparent !important; }
 
 #Kunena .knewchar {
 	color: #009900;
@@ -88,6 +88,7 @@ Pink forum dark:			#ffd0ff 		RGB: 255/208/255
 #Kunena .kheader h3,
 #Kunena .kheader h3 a {
 	color: #fff !important;
+	padding-top: 8px !important;
 }
 
 #Kunena div.kblock div.ktitle {
@@ -203,6 +204,7 @@ Pink forum dark:			#ffd0ff 		RGB: 255/208/255
 #Kunena .kwho-banned ,
 #Kunena a.kwho-banned {
 	color: #A39D49 !important;
+	text-decoration: line-through !important;
 }
 
 #Kunena .kwho-blocked,

@@ -1,0 +1,249 @@
+/*!
+* jQuery Mobile 1.4.3
+* Git HEAD hash: b9c6473e3d90af26570e6f14e5a0307897ab385c <> Date: Tue Jul 1 2014 15:37:36 UTC
+* http://jquerymobile.com
+*
+* Copyright 2010, 2014 jQuery Foundation, Inc. and othercontributors
+* Released under the MIT license.
+* http://jquery.org/license
+*
+*/
+
+
+/* "page" containers - full-screen views, one should always be in view post-pageload */
+.ui-mobile [data-role=page],
+.ui-mobile [data-role=dialog],
+.ui-page {
+	top: 0;
+	left: 0;
+	width: 100%;
+	min-height: 100%;
+	position: absolute;
+	display: none;
+	border: 0;
+}
+/* On ios4, setting focus on the page element causes flashing during transitions when there is an outline, so we turn off outlines */
+.ui-page {
+	outline: none;
+}
+.ui-mobile .ui-page-active {
+	display: block;
+	overflow: visible;
+	overflow-x: hidden;
+}
+
+
+
+/* keyframes for slidein from sides */
+@-webkit-keyframes slideinfromright {
+    from { -webkit-transform: translate3d(100%,0,0); }
+    to { -webkit-transform: translate3d(0,0,0); }
+}
+@-moz-keyframes slideinfromright {
+    from { -moz-transform: translateX(100%); }
+    to { -moz-transform: translateX(0); }
+}
+@keyframes slideinfromright {
+    from { transform: translateX(100%); }
+    to { transform: translateX(0); }
+}
+@-webkit-keyframes slideinfromleft {
+    from { -webkit-transform: translate3d(-100%,0,0); }
+    to { -webkit-transform: translate3d(0,0,0); }
+}
+@-moz-keyframes slideinfromleft {
+    from { -moz-transform: translateX(-100%); }
+    to { -moz-transform: translateX(0); }
+}
+@keyframes slideinfromleft {
+    from { transform: translateX(-100%); }
+    to { transform: translateX(0); }
+}
+/* keyframes for slideout to sides */
+@-webkit-keyframes slideouttoleft {
+    from { -webkit-transform: translate3d(0,0,0); }
+    to { -webkit-transform: translate3d(-100%,0,0); }
+}
+@-moz-keyframes slideouttoleft {
+    from { -moz-transform: translateX(0); }
+    to { -moz-transform: translateX(-100%); }
+}
+@keyframes slideouttoleft {
+    from { transform: translateX(0); }
+    to { transform: translateX(-100%); }
+}
+@-webkit-keyframes slideouttoright {
+    from { -webkit-transform: translate3d(0,0,0); }
+    to { -webkit-transform: translate3d(100%,0,0); }
+}
+@-moz-keyframes slideouttoright {
+    from { -moz-transform: translateX(0); }
+    to { -moz-transform: translateX(100%); }
+}
+@keyframes slideouttoright {
+    from { transform: translateX(0); }
+    to { transform: translateX(100%); }
+}
+.slide.out, .slide.in {
+	-webkit-animation-timing-function: ease-out;
+	-webkit-animation-duration: 700ms;
+	-moz-animation-timing-function: ease-out;
+	-moz-animation-duration: 700ms;
+	animation-timing-function: ease-out;
+	animation-duration: 700ms;
+}
+.slide.out {
+	-webkit-transform: translate3d(-100%,0,0);
+	-webkit-animation-name: slideouttoleft;
+	-moz-transform: translateX(-100%);
+	-moz-animation-name: slideouttoleft;
+	transform: translateX(-100%);
+	animation-name: slideouttoleft;
+}
+.slide.in {
+	-webkit-transform: translate3d(0,0,0);
+	-webkit-animation-name: slideinfromright;
+	-moz-transform: translateX(0);
+	-moz-animation-name: slideinfromright;
+	transform: translateX(0);
+	animation-name: slideinfromright;
+}
+.slide.out.reverse {
+	-webkit-transform: translate3d(100%,0,0);
+	-webkit-animation-name: slideouttoright;
+	-moz-transform: translateX(100%);
+	-moz-animation-name: slideouttoright;
+	transform: translateX(100%);
+	animation-name: slideouttoright;
+}
+.slide.in.reverse {
+	-webkit-transform: translate3d(0,0,0);
+	-webkit-animation-name: slideinfromleft;
+	-moz-transform: translateX(0);
+	-moz-animation-name: slideinfromleft;
+	transform: translateX(0);
+	animation-name: slideinfromleft;
+}
+.slidefade.out {
+	-webkit-transform: translateX(-100%);
+	-webkit-animation-name: slideouttoleft;
+	-webkit-animation-duration: 225ms;
+	-moz-transform: translateX(-100%);
+	-moz-animation-name: slideouttoleft;
+	-moz-animation-duration: 225ms;
+	transform: translateX(-100%);
+	animation-name: slideouttoleft;
+	animation-duration: 225ms;
+}
+.slidefade.in {
+	-webkit-transform: translateX(0);
+	-webkit-animation-name: fadein;
+	-webkit-animation-duration: 200ms;
+	-moz-transform: translateX(0);
+	-moz-animation-name: fadein;
+	-moz-animation-duration: 200ms;
+	transform: translateX(0);
+	animation-name: fadein;
+	animation-duration: 200ms;
+}
+
+/* The properties in this rule are only necessary for the 'flip' transition.
+ * We need specify the perspective to create a projection matrix. This will add
+ * some depth as the element flips. The depth number represents the distance of
+ * the viewer from the z-plane. According to the CSS3 spec, 1000 is a moderate
+ * value.
+ */
+.viewport-flip {
+	-webkit-perspective: 1000;
+	-moz-perspective: 1000;
+	perspective: 1000;
+	position: absolute;
+}
+.flip {
+	-webkit-backface-visibility: hidden;
+	-webkit-transform: translateX(0); /* Needed to work around an iOS 3.1 bug that causes listview thumbs to disappear when -webkit-visibility:hidden is used. */
+	-moz-backface-visibility: hidden;
+	-moz-transform: translateX(0);
+	backface-visibility: hidden;
+	transform: translateX(0);
+}
+.flip.out {
+	-webkit-transform: rotateY(-90deg) scale(.9);
+	-webkit-animation-name: flipouttoleft;
+	-webkit-animation-duration: 175ms;
+	-moz-transform: rotateY(-90deg) scale(.9);
+	-moz-animation-name: flipouttoleft;
+	-moz-animation-duration: 175ms;
+	transform: rotateY(-90deg) scale(.9);
+	animation-name: flipouttoleft;
+	animation-duration: 175ms;
+}
+.flip.in {
+	-webkit-animation-name: flipintoright;
+	-webkit-animation-duration: 225ms;
+	-moz-animation-name: flipintoright;
+	-moz-animation-duration: 225ms;
+	animation-name: flipintoright;
+	animation-duration: 225ms;
+}
+.flip.out.reverse {
+	-webkit-transform: rotateY(90deg) scale(.9);
+	-webkit-animation-name: flipouttoright;
+	-moz-transform: rotateY(90deg) scale(.9);
+	-moz-animation-name: flipouttoright;
+	transform: rotateY(90deg) scale(.9);
+	animation-name: flipouttoright;
+}
+.flip.in.reverse {
+	-webkit-animation-name: flipintoleft;
+	-moz-animation-name: flipintoleft;
+	animation-name: flipintoleft;
+}
+@-webkit-keyframes flipouttoleft {
+    from { -webkit-transform: rotateY(0); }
+    to { -webkit-transform: rotateY(-90deg) scale(.9); }
+}
+@-moz-keyframes flipouttoleft {
+    from { -moz-transform: rotateY(0); }
+    to { -moz-transform: rotateY(-90deg) scale(.9); }
+}
+@keyframes flipouttoleft {
+    from { transform: rotateY(0); }
+    to { transform: rotateY(-90deg) scale(.9); }
+}
+@-webkit-keyframes flipouttoright {
+    from { -webkit-transform: rotateY(0) ; }
+    to { -webkit-transform: rotateY(90deg) scale(.9); }
+}
+@-moz-keyframes flipouttoright {
+    from { -moz-transform: rotateY(0); }
+    to { -moz-transform: rotateY(90deg) scale(.9); }
+}
+@keyframes flipouttoright {
+    from { transform: rotateY(0); }
+    to { transform: rotateY(90deg) scale(.9); }
+}
+@-webkit-keyframes flipintoleft {
+    from { -webkit-transform: rotateY(-90deg) scale(.9); }
+    to { -webkit-transform: rotateY(0); }
+}
+@-moz-keyframes flipintoleft {
+    from { -moz-transform: rotateY(-90deg) scale(.9); }
+    to { -moz-transform: rotateY(0); }
+}
+@keyframes flipintoleft {
+    from { transform: rotateY(-90deg) scale(.9); }
+    to { transform: rotateY(0); }
+}
+@-webkit-keyframes flipintoright {
+    from { -webkit-transform: rotateY(90deg) scale(.9); }
+    to { -webkit-transform: rotateY(0); }
+}
+@-moz-keyframes flipintoright {
+    from { -moz-transform: rotateY(90deg) scale(.9); }
+    to { -moz-transform: rotateY(0); }
+}
+@keyframes flipintoright {
+    from { transform: rotateY(90deg) scale(.9); }
+    to { transform: rotateY(0); }
+}

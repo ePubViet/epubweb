@@ -1,0 +1,521 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="plugin" version="2.5" group="system" method="upgrade">
+	<name>JUX Coming Soon</name>
+    <author>JoomlaUX!</author>
+    <developer>longdt@joomseller.com</developer>
+    <creationDate>September 2014</creationDate>
+    <copyright>Copyright (C) 2012 - 2014 by Joomlaux. All rights reserved.</copyright>
+    <authorEmail>admin@Joomlaux.com</authorEmail>
+    <authorUrl>http://Joomlaux.com</authorUrl>
+    <version>1.0.0</version>
+    <license> http://www.gnu.org/licenses/gpl-3.0.html GNU/GPL</license>
+	<description>
+        <![CDATA[
+          <div style="line-height:24px; font-weight:normal; font-size:13px; color:#5b5b5b">JUX Coming Soon plugin allows you to easily create and customize your Joomla Coming Soon page.</div>
+          <div style="line-height:24px; font-weight:normal; font-size:13px;color:#5b5b5b">This page can be used for an under-construction website or an under-maintenance website. You will also be able to choose displaying the Login page, About us page, Contact us page or not. All in one page style with smoothly effect!</div>
+          <div style="line-height:24px; font-weight:normal; font-size:13px;color:#5b5b5b">This plugin works with Joomla 2.5.x and Joomla 3.x</div>
+          <div style="line-height:24px; font-weight:normal; font-size:13px;color:#5b5b5b">This plugin support Beautiful countdown effects, background image, background slideshow and background video from Youtube. <b>Note:</b> Video don't display on Mobile devices!</div>
+          <div style="line-height:24px; font-weight:normal; font-size:13px;color:#5b5b5b">With JUX Coming Soon plugin, the Coming soon page is responsive and customizable, you'll be able to show or not the information below:</div>
+          <ul style="color:#5b5b5b;">
+            <li>Logo</li>
+            <li>Homepage</li>
+            <li>About us page</li>
+            <li>Contact us page</li>
+            <li>Login page</li>
+            <li>Favicon</li>
+            <li>Background Style: Image, Video, Slideshow</li>
+            <li>Adress and Map</li>
+            <li>Subscribe Mail</li>
+            <li>Social networks</li>
+            <li>Countdown</li>
+            <li>Meta tags data</li>
+            <li>Logon rights to user groups</li>
+          </ul>
+          <div style="font-weight:bold;">
+            To activate the offline page, just activate our plugin.<br> 
+            </div>
+          ]]>   
+    </description>
+	<files>
+        <folder>elements</folder>
+		<filename plugin="juxcomingsoon">juxcomingsoon.php</filename>
+		<filename>index.html</filename>
+	</files>
+	<media destination="plg_juxcomingsoon" folder="media">
+    <folder>css</folder>
+    <folder>images</folder>
+    <folder>javascript</folder>
+    <folder>fonts</folder>
+    <folder>fontes</folder>
+	  <filename>index.html</filename>
+	  <filename>soon.php</filename>
+      <filename>contact_me.php</filename>
+	</media>  	
+	<languages folder="language">
+		<language tag="en-GB">en-GB/en-GB.plg_system_juxcomingsoon.ini</language>
+		<language tag="en-GB">en-GB/en-GB.plg_system_juxcomingsoon.sys.ini</language>
+	</languages>
+	<config>
+	  <fields name="params" addfieldpath="/plugins/system/juxcomingsoon/elements">
+        <!-- Basic Options (Plugin Options) -->
+        <fieldset name="basic" addfieldpath="/plugins/system/juxcomingsoon/elements">
+            <field name="jux_font_style" type="JUXlist" label="JUX_FONTS_STYLE" description="JUX_FONTS_STYLE_DESC">
+                    <option value="custom" sub_fields="jux_font_custom,jux_font_custom_name">JUX_FONTS_STYLE_CUSTOM</option>
+                    <option value="http://fonts.googleapis.com/css?family=Lato:300,400,300italic">JUX_FONTS_STYLE_1</option>
+                    <option value="http://fonts.googleapis.com/css?family=Tangerine|Inconsolata|Droid+Sans">JUX_FONTS_STYLE_2</option>
+                    <option value="http://fonts.googleapis.com/css?family=Cantarell:italic|Droid+Serif:bold">JUX_FONTS_STYLE_3</option>
+            </field>
+            <field name="jux_font_custom" type="text" label="JUX_FONT_CUSTOM" description="JUX_FONT_CUSTOM_DESC" default="http://fonts.googleapis.com/css?family=Lato:300,400,300italic">
+            </field>
+            <field name="jux_font_custom_name" type="text" label="JUX_FONT_CUSTOM_NAME" description="JUX_FONT_CUSTOM_NAME_DESC" default="lato">
+            </field>
+            <field name="jux_text_color" type="color" label="JUX_TEXT_COLOR" description="JUX_TEXT_COLOR_DESC" default="#eaeaea">
+            </field>
+            <field name="jux_background_style" type="JUXList" default="0" label="JUX_BACKGROUND_STYLE" description="JUX_BACKGROUND_STYLE_DESC">
+                <option value="0" sub_fields="jux_background_image">JUX_BACKGROUND_STYLE_IMAGE</option>
+                <option value="1" sub_fields="slide_transition,slide_holdtime,slide_loop">JUX_BACKGROUND_STYLE_SLIDE</option>
+                <option value="2" sub_fields="jux_background_video_image,youtubeid,ratioyt,loopyt,muteyt,startyt">JUX_BACKGROUND_STYLE_VIDEO</option>
+            </field>
+            <field name="jux_favicon" type="media" directory="images" default="" label="JUX_FAVICON" description="JUX_FAVICON_DESC" />
+            <field name="jux_background_image" type="media" default="" label="JUX_BACKGROUND_IMAGE" description="JUX_BACKGROUND_IMAGE_DESC"  directory="comingsoon_image">
+            </field>
+            <field name="jux_background_video_image" type="media" default="" label="JUX_BACKGROUND_VIDEO_IMAGE" description="JUX_BACKGROUND_VIDEO_IMAGE_DESC">
+            </field>
+            <field name="jux_login_form" type="JUXradio" class="btn-group" label="JUX_LOGIN_FORM" description="JUX_LOGIN_FORM_DESC" default="1">
+                    <option value="0">JHIDE</option>
+                    <option value="1" sub_fields="jux_logo_login,jux_login_title,jux_login_intro">JSHOW</option>
+            </field>
+            <field name="jux_contact_page" type="JUXradio" class="btn-group" label="JUX_CONTACT_PAGE" description="JUX_CONTACT_PAGE_DESC" default="1">
+                    <option value="0">JHIDE</option>
+                    <option value="1" sub_fields="jux_contact_us_map,jux_contact_us_street,jux_contact_us_phone,jux_contact_us_email,jux_contact_us_email_title,jux_contact_us_email_description,jux_contact_us_info_title,jux_contact_us_info_description">JSHOW</option>
+            </field>
+            <field name="jux_about_page" type="JUXradio" class="btn-group" label="JUX_ABOUT_PAGE" description="JUX_ABOUT_PAGE_DESC" default="1">
+                    <option value="0">JHIDE</option>
+                    <option value="1" sub_fields="jux_about_us">JSHOW</option>
+            </field>
+            <field name="jux_group_user" type="text" default="7,8" label="JUX_GROUP_USER" description="JUX_GROUP_USER_DESC" size="40"/>
+        </fieldset>
+        <!-- End Basic Options -->
+        <!-- Layout Options -->
+        <!-- <fieldset name="layout" addfieldpath="/plugins/system/juxcomingsoon/elements">
+            <field name="layout_spacer_text" type="spacer" default="" label="LAYOUT_TEXT_SPACER" description="LAYOUT_TEXT_SPACER_DESC" />
+            <field name="position_1" type="list" require="true" label="JUX_POSITION_1" description="JUX_POSITION_1_DESC" default="1">
+                    <option value="1">JUX_POSITION_1_1</option>
+                    <option value="2">JUX_POSITION_1_2</option>
+                    <option value="3">JUX_POSITION_1_3</option>
+                    <option value="4">JUX_POSITION_1_4</option>
+                    <option value="5">JUX_POSITION_1_5</option>
+            </field>
+            <field name="position_2" type="list" require="true" label="JUX_POSITION_2" description="JUX_POSITION_2_DESC" default="2">
+                    <option value="1">JUX_POSITION_2_1</option>
+                    <option value="2">JUX_POSITION_2_2</option>
+                    <option value="3">JUX_POSITION_2_3</option>
+                    <option value="4">JUX_POSITION_2_4</option>
+                    <option value="5">JUX_POSITION_2_5</option>
+            </field>
+            <field name="position_3" type="list" require="true" label="JUX_POSITION_3" description="JUX_POSITION_3_DESC" default="3">
+                    <option value="1">JUX_POSITION_3_1</option>
+                    <option value="2">JUX_POSITION_3_2</option>
+                    <option value="3">JUX_POSITION_3_3</option>
+                    <option value="4">JUX_POSITION_3_4</option>
+                    <option value="5">JUX_POSITION_3_5</option>
+            </field>
+            <field name="position_4" type="list" require="true" label="JUX_POSITION_4" description="JUX_POSITION_4_DESC" default="4">
+                    <option value="1">JUX_POSITION_4_1</option>
+                    <option value="2">JUX_POSITION_4_2</option>
+                    <option value="3">JUX_POSITION_4_3</option>
+                    <option value="4">JUX_POSITION_4_4</option>
+                    <option value="5">JUX_POSITION_4_5</option>
+            </field>
+            <field name="position_5" type="list" require="true" label="JUX_POSITION_5" description="JUX_POSITION_5_DESC" default="5">
+                    <option value="1">JUX_POSITION_5_1</option>
+                    <option value="2">JUX_POSITION_5_2</option>
+                    <option value="3">JUX_POSITION_5_3</option>
+                    <option value="4">JUX_POSITION_5_4</option>
+                    <option value="5">JUX_POSITION_5_5</option>
+            </field>
+        </fieldset> -->
+        <!-- End Layout Options -->
+        <!-- Tab Homepage Options -->
+        <fieldset name="homepage" addfieldpath="/plugins/system/juxcomingsoon/elements">
+           
+            <field name="homepage_spacer_text" type="spacer" default="" label="HOMEPAGE_TEXT_SPACER" description="HOMEPAGE_TEXT_SPACER_DESC" />
+            <field name="jux_logo" type="media" label="JUX_LOGO" description="JUX_LOGO_DESC" default="">
+            </field>
+            <field name="jux_logo_effect" type="list" label="JUX_LOGO_EFFECT" description="JUX_LOGO_EFFECT_DESC" default="1">
+                    <option value="0">JUX_LOGO_EFFECT_NONE</option>
+                    <option value="1">JUX_LOGO_EFFECT_PULSE</option>
+                    <option value="2">JUX_LOGO_EFFECT_PULSE_GROW</option>
+                    <option value="3">JUX_LOGO_EFFECT_PULSE_SHRINK</option>
+            </field>
+            <field name="jux_homepage_overlay" type="juxradio" class="btn-group" label="JUX_HOMEPAGE_OVERLAY" description="JUX_HOMEPAGE_OVERLAY_DESC" default="1">
+                    <option value="0">JNO</option>
+                    <option value="1" sub_fields="jux_overlay_color,jux_overlay_opacity">JYES</option>
+            </field>
+            <field name="jux_overlay_color" type="color" label="JUX_OVERLAY_COLOR" description="JUX_OVERLAY_COLOR_DESC" default="#ffffff">
+            </field>
+            <field name="jux_overlay_opacity" type="text" default="0.3" label="JUX_OVERLAY_OPACITY" description="JUX_OVERLAY_OPACITY_DESC">
+            </field>
+            <field name="jux_homepage_email" type="juxradio" class="btn-group" default="1" label="JUX_HOMEPAGE_EMAIL" description="JUX_HOMEPAGE_EMAIL_DESC" >
+                    <option value="0">JHIDE</option>
+                    <option value="1">JSHOW</option>
+            </field>
+            <field name="jux_countdown_enable" type="juxradio" class="btn-group" default="1" label="JUX_COUNTDOWN_ENABLE" description="JUX_COUNTDOWN_ENABLE_DESC" >
+                <option value="0">JHIDE</option>
+                <option value="1" sub_fields="jux_countdown_timezone,jux_countdown_current_time,jux_countdown_launch_time,jux_countdown_style,jux_countdown_online">JSHOW</option>
+            </field>
+            <field name="jux_countdown_online" type="juxradio" class="btn-group" default="1" label="JUX_COUNTDOWN_ONLINE" description="JUX_COUNTDOWN_ONLINE_DESC" >
+                <option value="0">JHIDE</option>
+                <option value="1">JSHOW</option>
+            </field>
+            <field name="jux_homepage_social_networks" type="juxradio" class="btn-group" label="JUX_HOMEPAGE_SOCIAL_NETWORKS" description="JUX_HOMEPAGE_SOCIAL_NETWORKS_DESC" default="1">
+                <option value="0">JHIDE</option>
+                <option value="1" sub_fields="jux_facebook,jux_google,jux_twitter,jux_pinterest,jux_instagram,jux_youtube,jux_vimeo,jux_skype,jux_dribbble,jux_gigg,jux_delicious,jux_tumbler,jux_lastfm,jux_dropbox,jux_devianart">JSHOW</option>
+            </field>
+            <field name="custom_css" type="textarea" default="body{font-family:lato !important;}" label="JUX_CUSTOM_CSS" description="JUX_CUSTOM_CSS_DESCRIPTION" rows="10" cols="40"/>
+            <field name="jux_homepage_content" type="juxradio" class="btn-group" label="JUX_HOMEPAGE_CONTENT" description="JUX_HOMEPAGE_CONTENT_DESC" default="1">
+                    <option value="0">JHIDE</option>
+                    <option value="1" sub_fields="jux_homepage_content_title,jux_homepage_content_description">JSHOW</option>
+            </field>
+            <field name="jux_homepage_content_title" type="text" default="BE PATIENT AND STAY TUNED" label="JUX_HOMEPAGE_CONTENT_TITLE" description="JUX_HOMEPAGE_CONTENT_TITLE_DESC" size="100">
+            </field>
+            <field name="jux_homepage_content_description" size="30" type="editor" default="WE ARE GOING TO BE ONLINE IN CHECK" label="JUX_HOMEPAGE_CONTENT_DESCRIPTION" filter="raw"  />
+        </fieldset>
+        <!-- End Tab Homepage Options -->
+        <!-- Tab About Us -->
+        <fieldset name="about_us" addfieldpath="/plugins/system/juxcomingsoon/elements">
+            <field name="about_us_spacer_text" type="spacer" default="" label="ABOUT_US_TEXT_SPACER" description="ABOUT_US_TEXT_SPACER_DESC" />
+             <field name="jux_about_us" size="30" type="editor" default="About Us" label="JUX_ABOUT_US" filter="raw"  />
+        </fieldset>
+        <!-- End Tab Us -->
+        <!-- Tab Contact Us -->
+        <fieldset name="contact_us" addfieldpath="/plugins/system/juxcomingsoon/elements">
+            <field name="contact_us_spacer_text" type="spacer" default="" label="CONTACT_US_TEXT_SPACER" description="CONTACT_US_TEXT_SPACER_DESC" />
+            <field name="jux_contact_us_map_show" type="juxradio" label="JUX_CONTACT_US_MAP_SHOW" description="JUX_CONTACT_US_MAP_SHOW_DESC" default="1" class="btn-group">
+                <option value="0">JHIDE</option>
+                <option value="1" sub_fields="jux_contact_us_map">JSHOW</option>
+            </field>
+            <field name="jux_contact_us_map" type="textarea" label="JUX_CONTACT_US_MAP" description="JUX_CONTACT_US_MAP_DESC" default="" rows="10" cols="40">
+            </field>
+            <field name="jux_contact_us_street_show" type="juxradio" label="JUX_CONTACT_US_STREET_SHOW" description="JUX_CONTACT_US_STREET_SHOW_DESC" default="1" class="btn-group">
+                <option value="0">JHIDE</option>
+                <option value="1" sub_fields="jux_contact_us_street">JSHOW</option>
+            </field>
+            <field name="jux_contact_us_street" type="text" label="JUX_CONTACT_US_STREET" description="JUX_CONTACT_US_STREET_DESC" default="Big Ben - Westminster - London SW1A 0AA - United Kingdom">
+            </field>
+            <field name="jux_contact_us_phone_show" type="juxradio" label="JUX_CONTACT_US_PHONE_SHOW" description="JUX_CONTACT_US_PHONE_SHOW_DESC" default="1" class="btn-group">
+                <option value="0">JHIDE</option>
+                <option value="1" sub_fields="jux_contact_us_phone">JSHOW</option>
+            </field>
+            <field name="jux_contact_us_phone" type="text" label="JUX_CONTACT_US_PHONE" description="JUX_CONTACT_US_PHONE_DESC" default="+44 20 7219 4272">
+            </field>
+            <field name="jux_contact_us_email_show" type="juxradio" label="JUX_CONTACT_US_EMAIL_SHOW" description="JUX_CONTACT_US_EMAIL_SHOW_DESC" default="1" class="btn-group">
+                <option value="0">JHIDE</option>
+                <option value="1" sub_fields="jux_contact_us_email">JSHOW</option>
+            </field>
+            <field name="jux_contact_us_email" type="text" label="JUX_CONTACT_US_EMAIL" description="JUX_CONTACT_US_EMAIL_DESC" default="admin@yoursite.com">
+            </field>
+            <field name="jux_contact_us_email_title" type="text" label="JUX_CONTACT_US_EMAIL_TITLE" description="JUX_CONTACT_US_EMAIL_TITLE_DESC" default="CONTACT US"/>
+            <field name="jux_contact_us_email_description" size="30" type="editor" default="Drop us a line here if you have any questions!" label="JUX_CONTACT_US_EMAIL_DESCRIPTION" description="JUX_CONTACT_US_EMAIL_DESCRIPTION_DESC" filter="raw"/>
+            <field name="jux_contact_us_info_title" type="text" label="JUX_CONTACT_US_INFO_TITLE" description="JUX_CONTACT_US_INFO_TITLE_DESC" default="INFORMATION"/>
+            <field name="jux_contact_us_info_description" size="30" type="editor" default="Please see our information here!" label="JUX_CONTACT_US_INFO_DESCRIPTION" description="JUX_CONTACT_US_INFO_DESCRIPTION_DESC" filter="raw"/> 
+        </fieldset>
+        <!-- End Tab Contact Us -->
+        <!-- Login Page -->
+        <fieldset name="jux_login_page" addfieldpath="/plugins/system/juxcomingsoon/elements">
+            <field name="jux_login_page_spacer_text" type="spacer" default="" label="JUX_LOGIN_PAGE_TEXT_SPACER" description="JUX_LOGIN_PAGE_TEXT_SPACER_DESC" />
+            <field name="jux_logo_login" type="media" default="" label="JUX_LOGO_LOGIN" description="JUX_LOGO_LOGIN_DESC"/>
+            <field name="jux_login_title" type="text" label="JUX_LOGIN_TITLE" description="JUX_LOGIN_TITLE_DESC" default="Login Page"/>
+            <field name="jux_login_intro" size="30" type="editor" default="Login page description" label="JUX_LOGIN_INTRO" description="JUX_LOGIN_INTRO_DESC" filter="raw"  />
+        </fieldset>
+        <!-- End Login Page -->
+        <!-- Image Slideshow Tab -->
+        <fieldset name="jux_image_slideshow" addfieldpath="/plugins/system/juxcomingsoon/elements">
+            <field name="jux_image_slideshow_spacer_text" type="spacer" default="" label="JUX_IMAGE_SLIDESHOW_TEXT_SPACER" description="JUX_IMAGE_SLIDESHOW_TEXT_SPACER_DESC" />
+            <field name="slide_transition" size="50" type="text" default="6" label="JUX_SLIDESHOW_TRANSITION" description="JUX_SLIDESHOW_TRANSITION_DESC" />
+            <field name="slide_holdtime" size="50" type="text" default="3" label="JUX_SLIDESHOW_HOLD" description="JUX_SLIDESHOW_HOLD_DESC" />
+            <field name="slide_loop" size="50" type="text" default="0" label="JUX_SLIDESHOW_LOOP" description="JUX_SLIDESHOW_LOOP_DESC" />
+            <!-- Image 1 -->
+            <field name="jux_image1" type="juxradio" default="0" label="JUX_IMAGE1" class="btn-group" description="JUX_IMAGE_DESC">
+                <option value="0">JHIDE</option>
+                <option value="1" sub_fields="jux_image1_source,jux_image1_effect">JSHOW</option>
+            </field>
+            <field name="jux_image1_source" type="media" label="JUX_IMAGE_SOURCE" description="JUX_IMAGE_SOURCE_DESC" directory="comingsoon_image"></field>
+            <field name="jux_image1_effect" type="juxlist" default="1" label="JUX_IMAGE_EFFECT" description="JUX_IMAGE_EFFECT_DESC">
+                <option value="1">JUX_ZOOM_IN</option>
+                <option value="2">JUX_ZOOM_OUT</option>
+                <option value="3">JUX_PAN_UP</option>
+                <option value="4">JUX_PAN_DOWN</option>
+                <option value="5">JUX_PAN_RIGHT</option>
+                <option value="6">JUX_PAN_LEFT</option>
+            </field>
+            <!-- Image 2 -->
+            <field name="jux_image2" type="juxradio" default="0" class="btn-group" label="JUX_IMAGE2" description="JUX_IMAGE_DESC">
+                <option value="0">JHIDE</option>
+                <option value="1" sub_fields="jux_image2_source,jux_image2_effect">JSHOW</option>
+            </field>
+            <field name="jux_image2_source" type="media" label="JUX_IMAGE_SOURCE" description="JUX_IMAGE_SOURCE_DESC" directory="comingsoon_image"></field>
+            <field name="jux_image2_effect" type="juxlist" default="2" label="JUX_IMAGE_EFFECT" description="JUX_IMAGE_EFFECT_DESC">
+                <option value="1">JUX_ZOOM_IN</option>
+                <option value="2">JUX_ZOOM_OUT</option>
+                <option value="3">JUX_PAN_UP</option>
+                <option value="4">JUX_PAN_DOWN</option>
+                <option value="5">JUX_PAN_RIGHT</option>
+                <option value="6">JUX_PAN_LEFT</option>
+            </field>
+            <!-- Image 3 -->
+            <field name="jux_image3" type="juxradio" default="0" class="btn-group" label="JUX_IMAGE3" description="JUX_IMAGE_DESC">
+                <option value="0">JHIDE</option>
+                <option value="1" sub_fields="jux_image3_source,jux_image3_effect">JSHOW</option>
+            </field>
+            <field name="jux_image3_source" type="media" label="JUX_IMAGE_SOURCE" description="JUX_IMAGE_SOURCE_DESC" directory="comingsoon_image"></field>
+            <field name="jux_image3_effect" type="juxlist" default="3" label="JUX_IMAGE_EFFECT" description="JUX_IMAGE_EFFECT_DESC">
+                <option value="1">JUX_ZOOM_IN</option>
+                <option value="2">JUX_ZOOM_OUT</option>
+                <option value="3">JUX_PAN_UP</option>
+                <option value="4">JUX_PAN_DOWN</option>
+                <option value="5">JUX_PAN_RIGHT</option>
+                <option value="6">JUX_PAN_LEFT</option>
+            </field>
+            <!-- Image 4 -->
+            <field name="jux_image4" type="juxradio" default="0" class="btn-group" label="JUX_IMAGE4" description="JUX_IMAGE_DESC">
+                <option value="0">JHIDE</option>
+                <option value="1" sub_fields="jux_image4_source,jux_image4_effect">JSHOW</option>
+            </field>
+            <field name="jux_image4_source" type="media" label="JUX_IMAGE_SOURCE" description="JUX_IMAGE_SOURCE_DESC" directory="comingsoon_image"></field>
+            <field name="jux_image4_effect" type="juxlist" default="4" label="JUX_IMAGE_EFFECT" description="JUX_IMAGE_EFFECT_DESC">
+                <option value="1">JUX_ZOOM_IN</option>
+                <option value="2">JUX_ZOOM_OUT</option>
+                <option value="3">JUX_PAN_UP</option>
+                <option value="4">JUX_PAN_DOWN</option>
+                <option value="5">JUX_PAN_RIGHT</option>
+                <option value="6">JUX_PAN_LEFT</option>
+            </field>
+            <!-- Image 5 -->
+            <field name="jux_image5" type="juxradio" default="0" class="btn-group" label="JUX_IMAGE5" description="JUX_IMAGE_DESC">
+                <option value="0">JHIDE</option>
+                <option value="1" sub_fields="jux_image5_source,jux_image5_effect">JSHOW</option>
+            </field>
+            <field name="jux_image5_source" type="media" label="JUX_IMAGE_SOURCE" description="JUX_IMAGE_SOURCE_DESC" directory="comingsoon_image"></field>
+            <field name="jux_image5_effect" type="juxlist" default="5" label="JUX_IMAGE_EFFECT" description="JUX_IMAGE_EFFECT_DESC">
+                <option value="1">JUX_ZOOM_IN</option>
+                <option value="2">JUX_ZOOM_OUT</option>
+                <option value="3">JUX_PAN_UP</option>
+                <option value="4">JUX_PAN_DOWN</option>
+                <option value="5">JUX_PAN_RIGHT</option>
+                <option value="6">JUX_PAN_LEFT</option>
+            </field>
+        </fieldset>
+        <!-- End Image Slideshow Tab -->
+        <!-- Youtube Background Video Tab -->
+        <fieldset name="jux_youtube_video" addfieldpath="/plugins/system/juxcomingsoon/elements">
+            <field name="jux_youtube_video_spacer_text" type="spacer" default="" label="JUX_YOUTUBE_VIDEO_TEXT_SPACER" description="JUX_YOUTUBE_VIDEO_TEXT_SPACER_DESC" />
+            <field name="youtubeid" type="text" default="YE7VzlLtp-4" label="JUX_YOUTUBE_VIDEO_ID" description="JUX_YOUTUBE_VIDEO_ID_DESC" />
+            <field name="ratioyt" type="list" class="btn-group" default="0" label="JUX_YOUTUBE_VIDEO_RATIO" description="JUX_YOUTUBE_VIDEO_RATIO_DESC" >
+                <option value="1">JUX_YOUTUBE_VIDEO_RATIO_43</option>
+                <option value="0">JUX_YOUTUBE_VIDEO_RATIO_169</option>
+            </field>
+            <field name="muteyt" type="radio" class="btn-group" default="0" label="JUX_YOUTUBE_VIDEO_MUTE" description="JUX_YOUTUBE_VIDEO_MUTE_DESC" >
+                <option value="1">JYES</option>
+                <option value="0">JNO</option>
+            </field>
+            <field name="loopyt" type="radio" class="btn-group" default="1" label="JUX_YOUTUBE_VIDEO_LOOP" description="JUX_YOUTUBE_VIDEO_LOOP_DESC" >
+                <option value="1">JYES</option>
+                <option value="0">JNO</option>
+            </field>
+            <field name="startyt" type="text" class="btn-group" default="0" label="JUX_YOUTUBE_VIDEO_START" description="JUX_YOUTUBE_VIDEO_START_DESC" >
+            </field>
+        </fieldset>
+        <!-- Tab Countdown -->
+        <fieldset name="jux_countdown" addfieldpath="/plugins/system/juxcomingsoon/elements">
+            <field name="jux_countdown_spacer_text" type="spacer" default="" label="JUX_COUNTDOWN_TEXT_SPACER" description="JUX_COUNTDOWN_TEXT_SPACER_DESC" />
+            <field name="jux_countdown_timezone" type="hidden" class="btn-group" default="1" label="JUX_COUNTDOWN_TIMEZONE" description="JUX_COUNTDOWN_TIMEZONE_DESC" >
+                <!-- <option value="1">JUX_COUNTDOWN_TIMEZONE_1</option>
+                <option value="2">JUX_COUNTDOWN_TIMEZONE_2</option> -->
+            </field>
+            <field name="jux_countdown_current_time" type="dateformat" default="DATE_FORMAT_LC2" label="JUX_COUNTDOWN_CURRENT_TIME" description="JUX_COUNTDOWN_CURRENT_TIME_DESC" >
+            </field>
+            <field name="date_format_lc" type="dateformat" default="DATE_FORMAT_LC2" label="PLG_SYSTEM_JUXCOMINGSOON_CFG_DATE_FORMAT_LC" description="PLG_SYSTEM_JUXCOMINGSOON_CFG_DATE_FORMAT_LC_DESC">
+            <option value="custom" default="F j, Y, g:i a">PLG_SYSTEM_JUXCOMINGSOON_CFG_DATE_FORMAT_LC_CUSTOM</option>
+            </field>
+            <field name="custom_date_format" type="text" default="" label="PLG_SYSTEM_JUXCOMINGSOON_CFG_CUSTOM_DATE_FORMAT" description="PLG_SYSTEM_JUXCOMINGSOON_CFG_CUSTOM_DATE_FORMAT_DESC" size="30" />    
+            <field name="jux_countdown_launch_time" type="juxlist" class="btn-group" default="2" label="JUX_COUNTDOWN_LAUNCH_TIME" description="JUX_COUNTDOWN_LAUNCH_TIME_DESC" >
+                <option value="1" sub_fields="jux_calendar">JUX_COUNTDOWN_LAUNCH_TIME_SELECT</option>
+                <option value="2" sub_fields="cyear,cmonth,cday,chour,cminute,csecond">JUX_COUNTDOWN_LAUNCH_TIME_INSERT</option>
+            </field>
+            <field name="jux_calendar" type="calendar" label="JUX_CALENDAR" description="JUX_CALENDAR_DESC" 
+            format="%Y-%m-%d %H:%M:%S"
+            
+             />
+            <field name="cyear" size="50" type="text" default="2015" label="JUX_YEAR" />
+            <field name="cmonth" size="50" type="text" default="9" label="JUX_MONTH" />
+            <field name="cday" size="50" type="text" default="20" label="JUX_DAY" />
+            <field name="chour" size="50" type="text" default="0" label="JUX_HOUR" />
+            <field name="cminute" size="50" type="text" default="0" label="JUX_MINUTES" />
+            <field name="csecond" size="50" type="text" default="0" label="JUX_SECONDS" />
+            <field name="jux_countdown_end_style" type="juxlist" default="1" label="JUX_COUNTDOWN_END_STYLE" description="JUX_COUNTDOWN_END_STYLE_DESC" >
+                <option value="1">JUX_COUNTDOWN_END_AUTO_RELOAD</option>
+                <option value="2">JUX_COUNTDOWN_END_CLICK_RELOAD</option>
+            </field>
+            <field name="jux_countdown_style" type="juxlist" class="btn-group" default="1" label="JUX_COUNTDOWN_STYLE" description="JUX_COUNTDOWN_STYLE_DESC" >
+                <option value="1" sub_fields="circle_day_color,circle_day_border,circle_hour_color,circle_hour_border,circle_minute_color,circle_minute_border,circle_second_color,circle_second_border">JUX_COUNTDOWN_STYLE_TIMECIRCLES</option>
+                <option value="2" sub_fields="county_reflection,county_animation,county_theme">JUX_COUNTDOWN_STYLE_COUNTY</option>
+                <option value="3">JUX_COUNTDOWN_STYLE_NORMAL</option>
+                <option value="4" sub_fields="timeto_style,timeto_style_alert,timeto_style_days_number">JUX_COUNTDOWN_STYLE_SLIDE</option>
+                <option value="5">JUX_COUNTDOWN_STYLE_FLIP_CLOCK</option>
+            </field>
+            <!-- TimeCircles Config -->
+            <field name="circle_day_color" type="color" default="#FF9900" label="JUX_CIRCLES_DAY_COLOR" description="JUX_CIRCLES_DAY_COLOR_DESC" />
+            <field name="circle_day_border" type="text" default="6" label="JUX_CIRCLES_DAY_BORDER" description="JUX_CIRCLES_DAY_BORDER_DESC" />
+            <field name="circle_hour_color" type="color" default="#ECEFCB" label="JUX_CIRCLES_HOUR_COLOR" description="JUX_CIRCLES_HOUR_COLOR_DESC" />
+            <field name="circle_hour_border" type="text" default="6" label="JUX_CIRCLES_HOUR_BORDER" description="JUX_CIRCLES_HOUR_BORDER_DESC" />
+            <field name="circle_minute_color" type="color" default="#ACC742" label="JUX_CIRCLES_MINUTE_COLOR" description="JUX_CIRCLES_MINUTE_COLOR_DESC" />
+            <field name="circle_minute_border" type="text" default="6" label="JUX_CIRCLES_MINUTE_BORDER" description="JUX_CIRCLES_MINUTE_BORDER_DESC" />
+            <field name="circle_second_color" type="color" default="#7995D5" label="JUX_CIRCLES_SECOND_COLOR" description="JUX_CIRCLES_SECOND_COLOR_DESC" />
+            <field name="circle_second_border" type="text" default="6" label="JUX_CIRCLES_SECOND_BORDER" description="JUX_CIRCLES_SECOND_BORDER_DESC" />
+            <!-- County Config -->
+            <field name="county_reflection" type="radio" class="btn-group" default="0" label="COUNTY_REFLECTION" description="COUNTY_REFLECTION_DESC">
+                <option value="0">JNO</option>
+                <option value="1">JYES</option>
+            </field>
+            <field name="county_animation" type="list" class="btn-group" default="scroll" label="COUNTY_ANIMATION" description="COUNTY_ANIMATION_DESC">
+                <option value="scroll">COUNTY_ANIMATION_SCROLL</option>
+                <option value="fade">COUNTY_ANIMATION_FADE</option>
+            </field>
+            <field name="county_theme" type="list" class="btn-group" default="black" label="COUNTY_THEME" description="COUNTY_THEME_DESC">
+                <option value="red">COUNTY_THEME_RED</option>
+                <option value="black">COUNTY_THEME_BLACK</option>
+                <option value="blue">COUNTY_THEME_BLUE</option>
+                <option value="gray">COUNTY_THEME_GRAY</option>
+            </field>
+            <!-- Slide Config -->
+            <field name="timeto_style" type="list" class="btn-group" default="scroll" label="TIMETO_STYLE" description="TIMETO_STYLE_DESC">
+                <option value="black">SLIDE_TIMETO_BLACK</option>
+                <option value="white">SLIDE_TIMETO_WHITE</option>
+            </field>
+            <field name="timeto_style_alert" type="text" default="30" label="TIMETO_SLIDE_ALERT" description="TIMETO_SLIDE_ALERT_DESC">
+            </field>
+            <field name="timeto_style_days_number" type="text" default="2" label="TIMETO_SLIDE_DAYS" description="TIMETO_SLIDE_DAYS_DESC">
+            </field>
+        </fieldset>
+        <!-- End Tab -->
+        
+        <!-- Tab Social Networks -->
+        <fieldset name="jux_social_networks" addfieldpath="/plugins/system/juxcomingsoon/elements">
+            <field name="jux_social_networks_spacer_text" type="spacer" default="" label="JUX_SOCIAL_NETWORKS_TEXT_SPACER" description="JUX_SOCIAL_NETWORKS_TEXT_SPACER_DESC" />
+            <field name="jux_target" type="list" default="0" label="JUX_TARGET" description="JUX_TARGET_DESC">
+                <option value="0">JUX_TARGET_BLANK</option>
+                <option value="1">JUX_TARGET_SELF</option>
+            </field>
+            <field name="jux_facebook_show" type="juxradio" default="1" label="JUX_FACEBOOK_SHOW" description="JUX_FACEBOOK_SHOW_DESC" class="btn-group">
+                <option value="0">JHIDE</option>
+                <option value="1" sub_fields="jux_facebook">JSHOW</option>
+            </field>
+            <field name="jux_facebook" type="text" default="http://facebook.com/joomlaux" label="JUX_FACEBOOK" description="JUX_FACEBOOK_DESC" />
+            <field name="jux_google_show" type="juxradio" default="1" label="JUX_GOOGLE_SHOW" description="JUX_GOOGLE_SHOW_DESC" class="btn-group">
+                <option value="0">JHIDE</option>
+                <option value="1" sub_fields="jux_google">JSHOW</option>
+            </field>
+            <field name="jux_google" type="text" default="http://google.com" label="JUX_GOOGLE" description="JUX_GOOGLE_DESC" />
+            <field name="jux_twitter_show" type="juxradio" default="1" label="JUX_TWITTER_SHOW" description="JUX_TWITTER_SHOW_DESC" class="btn-group">
+                <option value="0">JHIDE</option>
+                <option value="1" sub_fields="jux_twitter">JSHOW</option>
+            </field>
+            <field name="jux_twitter" type="text" default="http://twitter.com/joomlaux" label="JUX_TWITTER" description="JUX_TWITTER_DESC" />
+            <field name="jux_pinterest_show" type="juxradio" default="1" label="JUX_PINTEREST_SHOW" description="JUX_PINTEREST_SHOW_DESC" class="btn-group">
+                <option value="0">JHIDE</option>
+                <option value="1" sub_fields="jux_pinterest">JSHOW</option>
+            </field>
+            <field name="jux_pinterest" type="text" default="http://pinterest.com/joomlaux" label="JUX_PINTEREST" description="JUX_PINTEREST_DESC" />
+            <field name="jux_instagram_show" type="juxradio" default="0" label="JUX_INSTAGRAM_SHOW" description="JUX_INSTAGRAM_SHOW_DESC" class="btn-group">
+                <option value="0">JHIDE</option>
+                <option value="1" sub_fields="jux_instagram">JSHOW</option>
+            </field>
+            <field name="jux_instagram" type="text" default="http://instagram.com/joomlaux" label="JUX_INSTAGRAM" description="JUX_INSTAGRAM_DESC" />
+            <field name="jux_youtube_show" type="juxradio" default="0" label="JUX_YOUTUBE_SHOW" description="JUX_YOUTUBE_SHOW_DESC" class="btn-group">
+                <option value="0">JHIDE</option>
+                <option value="1" sub_fields="jux_youtube">JSHOW</option>
+            </field>
+            <field name="jux_youtube" type="text" default="http://youtube.com/joomlaux" label="JUX_YOUTUBE" description="JUX_YOUTUBE_DESC" />
+            <field name="jux_vimeo_show" type="juxradio" default="0" label="JUX_VIMEO_SHOW" description="JUX_VIMEO_SHOW_DESC" class="btn-group">
+                <option value="0">JHIDE</option>
+                <option value="1" sub_fields="jux_vimeo">JSHOW</option>
+            </field>
+            <field name="jux_vimeo" type="text" default="http://vimeo.com/joomlaux" label="JUX_VIMEO" description="JUX_VIMEO_DESC" />
+            <field name="jux_skype_show" type="juxradio" default="0" label="JUX_SKYPE_SHOW" description="JUX_SKYPE_SHOW_DESC" class="btn-group">
+                <option value="0">JHIDE</option>
+                <option value="1" sub_fields="jux_skype">JSHOW</option>
+            </field>
+            <field name="jux_skype" type="text" default="http://skype.com/joomlaux" label="JUX_SKYPE" description="JUX_SKYPE_DESC" />
+            <field name="jux_dribbble_show" type="juxradio" default="0" label="JUX_DRIBBBLE_SHOW" description="JUX_DRIBBBLE_SHOW_DESC" class="btn-group">
+                <option value="0">JHIDE</option>
+                <option value="1" sub_fields="jux_dribbble">JSHOW</option>
+            </field>
+            <field name="jux_dribbble" type="text" default="http://dribbble.com/joomlaux" label="JUX_DRIBBBLE" description="JUX_DRIBBBLE_DESC" />
+            <field name="jux_gigg_show" type="juxradio" default="0" label="JUX_GIGG_SHOW" description="JUX_GIGG_SHOW_DESC" class="btn-group">
+                <option value="0">JHIDE</option>
+                <option value="1" sub_fields="jux_gigg">JSHOW</option>
+            </field>
+            <field name="jux_gigg" type="text" default="http://gigg.com/joomlaux" label="JUX_GIGG" description="JUX_GIGG_DESC" />
+            <field name="jux_delicious_show" type="juxradio" default="0" label="JUX_DELICIOUS_SHOW" description="JUX_DELICIOUS_SHOW_DESC" class="btn-group">
+                <option value="0">JHIDE</option>
+                <option value="1" sub_fields="jux_delicious">JSHOW</option>
+            </field>
+            <field name="jux_delicious" type="text" default="http://delicious.com/joomlaux" label="JUX_DELICOUS" description="JUX_DELICOUS_DESC" />
+            <field name="jux_tumbler_show" type="juxradio" default="0" label="JUX_TUMBLER_SHOW" description="JUX_TUMBLER_SHOW_DESC" class="btn-group">
+                <option value="0">JHIDE</option>
+                <option value="1" sub_fields="jux_tumbler">JSHOW</option>
+            </field>
+            <field name="jux_tumbler" type="text" default="http://tumbler.com/joomlaux" label="JUX_TUMBLER" description="JUX_TUMBLER_DESC" />
+            <field name="jux_lastfm_show" type="juxradio" default="0" label="JUX_LASTFM_SHOW" description="JUX_LASTFM_SHOW_DESC" class="btn-group">
+                <option value="0">JHIDE</option>
+                <option value="1" sub_fields="jux_lastfm">JSHOW</option>
+            </field>
+            <field name="jux_lastfm" type="text" default="http://lastfm.com/joomlaux" label="JUX_LASTFM" description="JUX_LASTFM_DESC" />
+            <field name="jux_dropbox_show" type="juxradio" default="0" label="JUX_DROPBOX_SHOW" description="JUX_DROPBOX_SHOW_DESC" class="btn-group">
+                <option value="0">JHIDE</option>
+                <option value="1" sub_fields="jux_dropbox">JSHOW</option>
+            </field>
+            <field name="jux_dropbox" type="text" default="http://dropbox.com/joomlaux" label="JUX_DROPBOX" description="JUX_DROPBOX_DESC" />
+            <field name="jux_devianart_show" type="juxradio" default="0" label="JUX_DEVIANART_SHOW" description="JUX_DEVIANART_SHOW_DESC" class="btn-group">
+                <option value="0">JHIDE</option>
+                <option value="1" sub_fields="jux_devianart">JSHOW</option>
+            </field>
+            <field name="jux_devianart" type="text" default="http://devianart.com/joomlaux" label="JUX_DEVIANART" description="JUX_DEVIANART_DESC" />
+        </fieldset>
+        <!-- End Tab Social Networks -->
+        <!-- Tab Meta data -->
+        <fieldset name="jux_metadata" addfieldpath="/plugins/system/juxcomingsoon/elements">
+            <field name="jux_metadata_spacer_text" type="spacer" default="" label="JUX_METADATA_TEXT_SPACER" description="JUX_METADATA_TEXT_SPACER_DESC" />
+            <field name="jux_metadata_title" type="text" default="JUX Coming soon" label="JUX_METADATA_TITLE" description="JUX_METADATA_TITLE_DESC" />
+            <field name="jux_metadata_description" type="textarea" default="JUX Coming soon" label="JUX_METADATA_DESCRIPTION" description="JUX_METADATA_DESCRIPTION_DESC" rows="10" cols="40" />
+            <field name="jux_metadata_keywords" type="textarea" default="JUX Coming soon" label="JUX_METADATA_KEYWORDS" description="JUX_METADATA_KEYWORDS_DESC" rows="10" cols="40" />
+        </fieldset>
+        <!-- End tab meta data -->
+        <!-- Email tab Configuration -->
+        <fieldset name="jux_email" addfieldpath="/plugins/system/juxcomingsoon/elements">
+            <field name="jux_email_spacer_text" type="spacer" default="" label="JUX_EMAIL_TEXT_SPACER" description="JUX_EMAIL_TEXT_SPACER_DESC" />
+            <field
+            name="admin_email"
+            type="email"
+            size="45"
+            default="admin@yoursite.com"
+            label="COM_JUX_COMING_ADMIN_EMAIL"
+            description="COM_JUX_COMING_ADMIN_EMAIL_DESC"
+            />
+            <field name="jux_admin_email_spacer_text" type="spacer" default="" label="JUX_ADMIN_EMAIL_TEXT_SPACER" description="JUX_ADMIN_EMAIL_TEXT_SPACER_DESC" />
+            <field name="maillist" type="list" default="acymailing" label="PLG_SYSTEM_JUXCOMINGSOON_CFG_MAILLIST" description="PLG_SYSTEM_JUXCOMINGSOON_CFG_MAILLIST_DESC">
+                <option value="none">PLG_SYSTEM_JUXCOMINGSOON_CFG_MAILLIST_NONE</option>
+                <option value="acymailing">PLG_SYSTEM_JUXCOMINGSOON_CFG_MAILLIST_ACYMAILING</option>
+            </field>
+            <field name="maillist_text" type="hidden" default="" label="PLG_SYSTEM_JUXCOMINGSOON_CFG_MAILLIST_TEXT" description="PLG_SYSTEM_JUXCOMINGSOON_CFG_MAILLIST_TEXT_DESC" rows="10" cols="35" />
+              <field name="maillist_name" type="hidden" class="btn-group" default="1" label="PLG_SYSTEM_JUXCOMINGSOON_CFG_MAILLIST_NAME" description="PLG_SYSTEM_JUXCOMINGSOON_CFG_MAILLIST_NAME_DESC">
+                    <option value="0">JNO</option>
+                    <option value="1">JYES</option>
+                </field>
+            <field name="acymailing_lists" type="hidden" default="" label="PLG_SYSTEM_JUXCOMINGSOON_CFG_MAILLIST_LISTS" description="PLG_SYSTEM_JUXCOMINGSOON_CFG_MAILLIST_LISTS_DESC" size="30" /> 
+        </fieldset>
+        <!-- End Email tab Configuration -->
+	  </fields>
+	</config>  	
+</extension>
